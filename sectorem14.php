@@ -94,8 +94,8 @@ class Sectorem14 extends Module
 	}
 	private static function tableExists($table, $useCache = FALSE)
 	{
-		if ( ! sizeof(self::$_tblCache) || ! $useCache)
-		{
+// 		if ( ! sizeof(self::$_tblCache) || ! $useCache)
+// 		{
 			$tmp = Db::getInstance()->ExecuteS('SHOW TABLES');
 	
 			foreach ($tmp as $entry)
@@ -104,12 +104,13 @@ class Sectorem14 extends Module
 	
 				$tableTmp = strtolower($entry[key($entry)]);
 	
-				if ( ! array_search($tableTmp, self::$_tblCache))
-					self::$_tblCache[] = $tableTmp;
+// 				if ( ! array_search($tableTmp, self::$_tblCache))
+// 					self::$_tblCache[] = $tableTmp;
 			}
-		}
+// 		}
 	
-		return array_search(strtolower($table), self::$_tblCache) ? true : false;
+// 		return array_search(strtolower($table), self::$_tblCache) ? true : false;
+		return true;
 	}
 	
 	private function installModuleTab($class, $name)
@@ -120,10 +121,10 @@ class Sectorem14 extends Module
 		$tabParent = (int)(Db::getInstance()->getValue($sql));
 	
 		if ( ! is_array($name))
-			$name = self::getMultilangField($name);
+// 			$name = self::getMultilangField($name);
 	
-		if (self::fileExistsInModulesDir('logo.gif') && is_writeable(_PS_IMG_DIR_ . 't/'))
-			$this->copyLogo($class);
+// 		if (self::fileExistsInModulesDir('logo.gif') && is_writeable(_PS_IMG_DIR_ . 't/'))
+// 			$this->copyLogo($class);
 	
 		$tab = new Tab();
 		$tab->name       = $name;
