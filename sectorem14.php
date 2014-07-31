@@ -8,7 +8,7 @@ class Sectorem14 extends Module
     {
     $this->name = 'sectorem14';
     $this->tab = 'Sectorem';
-    $this->version = 0.03;
+    $this->version = 0.05;
     $this->author = 'Sectorem Team';
     $this->need_instance = 1;
  
@@ -25,7 +25,7 @@ class Sectorem14 extends Module
             return false;
         
         $query = 
-        'CREATE TABLE `' . _DB_PREFIX_ . 'sectorem`
+        'CREATE TABLE `' . _DB_PREFIX_ . 'sectorem14`
             (
                 `id_sectorem14` INT(10) unsigned NOT NULL AUTO_INCREMENT  ,
                 `name`               VARCHAR(128) NOT NULL                     ,
@@ -78,8 +78,8 @@ class Sectorem14 extends Module
 			}
 		}
 		
-		if (self::tableExists(_DB_PREFIX_ . 'sectorem'))
-			Db::getInstance()->Execute('DROP TABLE `' . _DB_PREFIX_ . 'sectorem`');
+		if (self::tableExists(_DB_PREFIX_ . 'sectorem14'))
+			Db::getInstance()->Execute('DROP TABLE `' . _DB_PREFIX_ . 'sectorem14`');
             
 //         Configuration::deleteByName('EXPORT_LANGUAGE');
 //         Configuration::deleteByName('EXPORT_DELIMITER');

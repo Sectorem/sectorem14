@@ -36,22 +36,22 @@ class AdminSectorem extends AdminTab
 	{
 		global $cookie;
 		
-	 	$this->table = 'sectorem';
+	 	$this->table = 'sectorem14';
  	 	$this->className = 'Sectorem'; // Nie ma klasy
-	 	$this->lang = true;
+	 	$this->lang = false; // brak jezyka
 	 	$this->edit = true;
 	 	$this->delete = true;
 		
 		$this->fieldsDisplay = array(
-		'id_attachment' => array('title' => $this->l('ID'), 'align' => 'center', 'width' => 25),
+		'id_sectorem14' => array('title' => $this->l('ID'), 'align' => 'center', 'width' => 25),
 		'name' => array('title' => $this->l('Name')),
 		'file' => array('title' => $this->l('File')));
 	
 		parent::__construct();
 	}
 
-// 	public function postProcess()
-// 	{
+	public function postProcess()
+	{
 // 		/* PrestaShop demo mode */
 // 		if (_PS_MODE_DEMO_)
 // 		{
@@ -95,8 +95,8 @@ class AdminSectorem extends AdminTab
 // 			}
 // 			$this->validateRules();
 // 		}
-// 		return parent::postProcess();
-// 	}
+		return parent::postProcess();
+	}
 	
 	public function displayForm($isMainTab = true)
 	{
@@ -107,72 +107,72 @@ class AdminSectorem extends AdminTab
 			return;
 		
 		echo '
-		<form action="'.$currentIndex.'&submitAdd'.$this->table.'=1&token='.$this->token.'" method="post" enctype="multipart/form-data">
-		'.($obj->id ? '<input type="hidden" name="id_'.$this->table.'" value="'.$obj->id.'" />' : '').'
-			<fieldset><legend><img src="../img/t/AdminAttachments.gif" />'.$this->l('Attachment').'</legend>
-				<label>'.$this->l('Filename:').' </label>
-				<div class="margin-form">';
-		foreach ($this->_languages as $language)
-			echo '	<div id="cname_'.$language['id_lang'].'" style="display: '.($language['id_lang'] == $this->_defaultFormLanguage ? 'block' : 'none').'; float: left;">
-						<input size="33" type="text" name="name_'.$language['id_lang'].'" value="'.htmlentities($this->getFieldValue($obj, 'name', (int)($language['id_lang'])), ENT_COMPAT, 'UTF-8').'" /><sup> *</sup>
-					</div>';							
-		$this->displayFlags($this->_languages, $this->_defaultFormLanguage, 'cname¤cdescription', 'cname');
-		echo '	</div>
-				<div class="clear">&nbsp;</div>
-				<label>'.$this->l('Description:').' </label>
-				<div class="margin-form">';
-		foreach ($this->_languages as $language)
-			echo '	<div id="cdescription_'.$language['id_lang'].'" style="display: '.($language['id_lang'] == $this->_defaultFormLanguage ? 'block' : 'none').'; float: left;">
-						<textarea name="description_'.$language['id_lang'].'">'.htmlentities($this->getFieldValue($obj, 'description', (int)($language['id_lang'])), ENT_COMPAT, 'UTF-8').'</textarea>
-					</div>';							
-		$this->displayFlags($this->_languages, $this->_defaultFormLanguage, 'cname¤cdescription', 'cdescription');
-		echo '	</div>
-				<div class="clear">&nbsp;</div>
-				<label>'.$this->l('File').'</label>
-				<div class="margin-form">
-					<p><input type="file" name="file" /></p>
-					<p>'.$this->l('Upload file from your computer').'</p>
-				</div>
-				<div class="clear">&nbsp;</div>
-				<div class="margin-form">
-					<input type="submit" value="'.$this->l('   Save   ').'" name="submitAdd'.$this->table.'" class="button" />
-				</div>
-				<div class="small"><sup>*</sup> '.$this->l('Required field').'</div>
-			</fieldset>
-		</form>';
+// 		<form action="'.$currentIndex.'&submitAdd'.$this->table.'=1&token='.$this->token.'" method="post" enctype="multipart/form-data">
+// 		'.($obj->id ? '<input type="hidden" name="id_'.$this->table.'" value="'.$obj->id.'" />' : '').'
+// 			<fieldset><legend><img src="../img/t/AdminAttachments.gif" />'.$this->l('Attachment').'</legend>
+// 				<label>'.$this->l('Filename:').' </label>
+// 				<div class="margin-form">';
+// 		foreach ($this->_languages as $language)
+// 			echo '	<div id="cname_'.$language['id_lang'].'" style="display: '.($language['id_lang'] == $this->_defaultFormLanguage ? 'block' : 'none').'; float: left;">
+// 						<input size="33" type="text" name="name_'.$language['id_lang'].'" value="'.htmlentities($this->getFieldValue($obj, 'name', (int)($language['id_lang'])), ENT_COMPAT, 'UTF-8').'" /><sup> *</sup>
+// 					</div>';							
+// 		$this->displayFlags($this->_languages, $this->_defaultFormLanguage, 'cname¤cdescription', 'cname');
+// 		echo '	</div>
+// 				<div class="clear">&nbsp;</div>
+// 				<label>'.$this->l('Description:').' </label>
+// 				<div class="margin-form">';
+// 		foreach ($this->_languages as $language)
+// 			echo '	<div id="cdescription_'.$language['id_lang'].'" style="display: '.($language['id_lang'] == $this->_defaultFormLanguage ? 'block' : 'none').'; float: left;">
+// 						<textarea name="description_'.$language['id_lang'].'">'.htmlentities($this->getFieldValue($obj, 'description', (int)($language['id_lang'])), ENT_COMPAT, 'UTF-8').'</textarea>
+// 					</div>';							
+// 		$this->displayFlags($this->_languages, $this->_defaultFormLanguage, 'cname¤cdescription', 'cdescription');
+// 		echo '	</div>
+// 				<div class="clear">&nbsp;</div>
+// 				<label>'.$this->l('File').'</label>
+// 				<div class="margin-form">
+// 					<p><input type="file" name="file" /></p>
+// 					<p>'.$this->l('Upload file from your computer').'</p>
+// 				</div>
+// 				<div class="clear">&nbsp;</div>
+// 				<div class="margin-form">
+// 					<input type="submit" value="'.$this->l('   Save   ').'" name="submitAdd'.$this->table.'" class="button" />
+// 				</div>
+// 				<div class="small"><sup>*</sup> '.$this->l('Required field').'</div>
+// 			</fieldset>
+// 		</form>';
 	}
 	
-	public function getList($id_lang, $orderBy = NULL, $orderWay = NULL, $start = 0, $limit = NULL)
-	{
-		parent::getList((int)$id_lang, $orderBy, $orderWay, $start, $limit);
-		if (sizeof($this->_list))
-			$this->_productAttachements = Attachment::getProductAttached((int)$id_lang, $this->_list);	
-	}
+// 	public function getList($id_lang, $orderBy = NULL, $orderWay = NULL, $start = 0, $limit = NULL)
+// 	{
+// 		parent::getList((int)$id_lang, $orderBy, $orderWay, $start, $limit);
+// 		if (sizeof($this->_list))
+// 			$this->_productAttachements = Attachment::getProductAttached((int)$id_lang, $this->_list);	
+// 	}
 	
-	protected function _displayDeleteLink($token = NULL, $id)
-	{
-	    global $currentIndex;
+// 	protected function _displayDeleteLink($token = NULL, $id)
+// 	{
+// 	    global $currentIndex;
 		
-		$_cacheLang['Delete'] = $this->l('Delete');
-		$_cacheLang['DeleteItem'] = $this->l('Delete item #', __CLASS__, TRUE, FALSE);
+// 		$_cacheLang['Delete'] = $this->l('Delete');
+// 		$_cacheLang['DeleteItem'] = $this->l('Delete item #', __CLASS__, TRUE, FALSE);
 		
-		if (isset($this->_productAttachements[$id]))
-		{
-			$productList = '';
-			foreach($this->_productAttachements[$id] as $product)
-				$productList .= $product.', ';
-		}
-		echo '
-			<script>
-				function confirmProductAttached(productList)
-				{
-					if (confirm(\''.$_cacheLang['DeleteItem'].$id.'\'))
-						return confirm(\''.$this->l('This attachment is used by the following products:').'\r\n\' + productList);
-					return false;
-				}
-			</script>
-			<a href="'.$currentIndex.'&'.$this->identifier.'='.$id.'&delete'.$this->table.'&token='.($token!=NULL ? $token : $this->token).'"
-			onclick="'.(isset($this->_productAttachements[$id]) ? 'return confirmProductAttached(\''.$productList.'\')' : 'return confirm(\''.$_cacheLang['DeleteItem'].$id.' ?'.(!is_null($this->specificConfirmDelete) ? '\r'.rtrim($this->specificConfirmDelete, ', ') : '').'\')' ).'">
-			<img src="../img/admin/delete.gif" alt="'.$_cacheLang['Delete'].'" title="'.$_cacheLang['Delete'].'" /></a>';
-	}
-}
+// 		if (isset($this->_productAttachements[$id]))
+// 		{
+// 			$productList = '';
+// 			foreach($this->_productAttachements[$id] as $product)
+// 				$productList .= $product.', ';
+// 		}
+// 		echo '
+// 			<script>
+// 				function confirmProductAttached(productList)
+// 				{
+// 					if (confirm(\''.$_cacheLang['DeleteItem'].$id.'\'))
+// 						return confirm(\''.$this->l('This attachment is used by the following products:').'\r\n\' + productList);
+// 					return false;
+// 				}
+// 			</script>
+// 			<a href="'.$currentIndex.'&'.$this->identifier.'='.$id.'&delete'.$this->table.'&token='.($token!=NULL ? $token : $this->token).'"
+// 			onclick="'.(isset($this->_productAttachements[$id]) ? 'return confirmProductAttached(\''.$productList.'\')' : 'return confirm(\''.$_cacheLang['DeleteItem'].$id.' ?'.(!is_null($this->specificConfirmDelete) ? '\r'.rtrim($this->specificConfirmDelete, ', ') : '').'\')' ).'">
+// 			<img src="../img/admin/delete.gif" alt="'.$_cacheLang['Delete'].'" title="'.$_cacheLang['Delete'].'" /></a>';
+// 	}
+ }
