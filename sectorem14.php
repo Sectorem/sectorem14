@@ -7,8 +7,8 @@ class Sectorem14 extends Module
   public function __construct()
     {
     $this->name = 'sectorem14';
-    $this->tab = 'Sectorem';
-    $this->version = 0.05;
+    $this->tab = 'Sectorem1';
+    $this->version = 0.06;
     $this->author = 'Sectorem Team';
     $this->need_instance = 1;
  
@@ -41,23 +41,8 @@ class Sectorem14 extends Module
             
             return false;
         }
-        
-//         $zones = Zone::getZones(true);
-//         $carriers = Carrier::getCarriers(intval(Configuration::get('PS_LANG_DEFAULT')), true);
-        
-//         if (sizeof($zones) == 0 || sizeof($carriers) == 0) 
-//             return false;
-        
-//         Configuration::updateValue('EXPORT_LANGUAGE', (int)(Configuration::get('PS_LANG_DEFAULT')));
-//         Configuration::updateValue('EXPORT_DELIMITER', ',');
-//         Configuration::updateValue('EXPORT_COMBINATIONS', 1);
-//         Configuration::updateValue('EXPORT_ENCLOSURE', 1);
-//         Configuration::updateValue('EXPORT_HEADER', 1);
-//         Configuration::updateValue('EXPORT_ZONE', $zones[0]['id_zone']);
-//         Configuration::updateValue('EXPORT_CARRIER', $carriers[0]['id_carrier']);
-//         Configuration::updateValue('EXPORT_INACTIVE', 0);
-        
-        return $this->installModuleTab('AdminSectorem', 'Sectorem');
+         
+        return $this->installModuleTab('AdminSectorem','Sectorem3', 'Sectorem');
     }
     
 	public function uninstall()
@@ -113,21 +98,24 @@ class Sectorem14 extends Module
 		return true;
 	}
 	
-	private function installModuleTab($class, $name)
+	private function installModuleTab($class, $tabName , $name)
 	{
 		$sql = '
 		SELECT `id_tab` FROM `' . _DB_PREFIX_ . 'tab` WHERE `class_name` = "AdminCatalog"';
 	
 		$tabParent = (int)(Db::getInstance()->getValue($sql));
 	
-		if ( ! is_array($name))
+// 		if ( ! is_array($name))
 // 			$name = self::getMultilangField($name);
+		foreach (Language::getLanguages() as $language)
+			$tab->name[$language['id_lang']] = 'Sectore3m22';
 	
 // 		if (self::fileExistsInModulesDir('logo.gif') && is_writeable(_PS_IMG_DIR_ . 't/'))
 // 			$this->copyLogo($class);
 	
 		$tab = new Tab();
-		$tab->name       = $name;
+		//$tab->name       = $name;
+		$tab->name = $tabName;
 		$tab->class_name = $class;
 		$tab->module     = $this->name;
 		$tab->id_parent  = $tabParent;
@@ -140,6 +128,17 @@ class Sectorem14 extends Module
 		foreach ($this->_postErrors as $error)
 			echo $this->displayError($error);
 	}
+// 	private static function getMultilangField($field)
+// 	{
+// 		$languages = Language::getLanguages();
+// 		$res = array();
+	
+// 		foreach ($languages as $lang)
+// 			$res[$lang['id_lang']] = $field;
+	
+// 		return $res;
+// 	}
+	
 
   }
 ?>

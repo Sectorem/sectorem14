@@ -1,1 +1,8 @@
 1. http://stackoverflow.com/questions/3790220/prestashop-no-errors-blank-page
+2. http://doc.prestashop.com/display/PS14/Db+class+good+practices+for+Prestashop+1.4
+3. http://doc.prestashop.com/display/PS14/Using+the+REST+webservice
+
+Changelog
+=========
+
+1. do zrobienia id_tab_lang [employees>Tabs> klasa AdminSectorem] trzeba zmienic nazwe z m na Sectorem
