@@ -2,6 +2,25 @@
 2. http://doc.prestashop.com/display/PS14/Db+class+good+practices+for+Prestashop+1.4
 3. http://doc.prestashop.com/display/PS14/Using+the+REST+webservice
 
+Struktura DB Presty
+4. http://doc.prestashop.com/display/PS14/Database+Structure
+5. http://doc.prestashop.com/display/PS14/Db+class+good+practices+for+Prestashop+1.4 << komunikacja z db presty.
+
+
+do zrobienia:
+co potrzebne do dodania towaru w prescie co sie aktualizuje? ps_
+dane w prescie
+
+Towar ps_products:
+	1. nazwa
+	2. ean13
+	3. cena(?)
+	4. ilosci
+Towar ps_lang:
+
+Do przejrzenia: AdminOrders.php AdminImport.php
+	
+	
 Debug:
 settings.ing.php > $smarty->debugging = true; 
 config.inc.php >
