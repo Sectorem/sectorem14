@@ -4,12 +4,8 @@
  * 
  */
 
-//include('httpful.phar');
-include_once(PS_ADMIN_DIR.'/../classes/AdminTab.php');
-include ('httpful.phar');
-//include_once('httpful.phar');
-//if ()
-use Httpful\Request;
+
+include(PS_ADMIN_DIR.'/../classes/AdminTab.php');
 
 class AdminSectorem extends AdminTab
 {
@@ -59,21 +55,33 @@ class AdminSectorem extends AdminTab
 	public function display()
 	{
 		echo '<h2 class="space">'.$this->l('Catalog tracking').'</h2>';
-		echo ''.PS_ADMIN_DIR;	
+		
 		
 		try
 		{
-			// 	$webService = new PrestaShopWebservice(PS_SHOP_PATH, PS_WS_AUTH_KEY, DEBUG);
-			// 	$opt = array('resource' => 'customers');
-			// 	if (isset($_GET['Create']))
-				// 		$xml = $webService->get(array('url' => PS_SHOP_PATH.'/api/customers?schema=blank'));
-				// 	else
-					// 		$xml = $webService->get($opt);
-					// 	$resources = $xml->children()->children();
-			$uri = "http://localhost:6869/api/towarapi";
-// 			$response = Httpful\Request::get($uri)->send();
-			$response = Request::get($uri)->send();
-				echo  $response;
+			//samcroft.co.uk/2014/php-json-encode-decode-functions-tutorial/
+			$uri = 'http://localhost:6869/api/towarapi';
+			$request = file_get_contents($uri);
+			
+			$parsedData = json_decode($request); // przerobienie na arraya
+			
+			// print_r($parsedData); // echo debuger
+			
+			echo '<table>';
+			
+			// http://stackoverflow.com/questions/15000874/php-loop-through-json-array
+			foreach ($parsedData as $row)
+			{
+			
+				echo '<tr>';
+				echo '<td>' . $row->id . '</td>'; // -> patrz komentarz wyzej
+				echo '<td>' . $row->nazwa . '</td>';
+				echo '<td>' . $row->ilosc . '</td>';
+			
+				echo '</tr>';
+			
+			}
+			echo '</table>';
 		}
 		//catch (ConnectionErrorException $e)
 		catch (Exception $e)
@@ -86,26 +94,8 @@ class AdminSectorem extends AdminTab
 			else echo 'Other error';
 		}
 		
-		//$row = array();
-		$parsedData = json_decode($response); // przerobienie na arraya
 		
-		// print_r($parsedData); // echo debuger
 		
-		echo '<table>';
-		
-		// http://stackoverflow.com/questions/15000874/php-loop-through-json-array
-		foreach ($parsedData as $row)
-		{
-		
-			echo '<tr>';
-			echo '<td>' . $row->id . '</td>'; // -> patrz komentarz wyzej
-			echo '<td>' . $row->nazwa . '</td>';
-			echo '<td>' . $row->ilosc . '</td>';
-		
-			echo '</tr>';
-			 
-		}
-		echo '</table>';
 	}
 
  }
