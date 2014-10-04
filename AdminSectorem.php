@@ -1,7 +1,11 @@
 <?php
 /*
  *  Db::getInstance()->autoExecute('target_table', array('id_target' => (int)$target,'name' => pSQL($name)), 'INSERT');
+ *  http://doc.prestashop.com/download/attachments/1409083/PrestaShop-Developer-Guide.pdf
+ *  samcroft.co.uk/2014/php-json-encode-decode-functions-tutorial/
+ * 	http://stackoverflow.com/questions/15000874/php-loop-through-json-array
  * 
+ * TODO: 1. POST na curl [http://blog.kamilbrenk.pl/jak-pobierac-zewnetrzne-zasoby/]
  */
 
 
@@ -62,7 +66,9 @@ class AdminSectorem extends AdminTab
 			//samcroft.co.uk/2014/php-json-encode-decode-functions-tutorial/
 			$uri = 'http://localhost:6869/api/towarapi';
 			$request = file_get_contents($uri);
-			
+// 			echo $request;
+			$request = array("\$id"=>"1","danezamowieniepozycja"=>array(),"id"=>0,"nazwa"=>"zxcc","ean13"=>null,"vat"=>null,"ilosc"=>20,"iloscRezerwacja"=>null,"cena"=>null);
+			//("$id"=>"1","danezamowieniepozycja"=>[],"id"=>0,"nazwa"=>"zxcc","ean13"=>null,"vat"=>null,"ilosc"=>20,"iloscRezerwacja"=>null,"cena"=>null);
 			$parsedData = json_decode($request); // przerobienie na arraya
 			
 			// print_r($parsedData); // echo debuger
